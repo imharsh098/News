@@ -5,7 +5,7 @@ import News from "./components/News";
 import "./App.css";
 
 export class App extends Component {
-  pageSize = 15;
+  pageSize = 9;
   render() {
     return (
       <div>

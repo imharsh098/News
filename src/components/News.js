@@ -36,6 +36,7 @@ export class News extends Component {
       totalResults: parsedData.totalResults,
       loading: false,
     });
+    console.log(parsedData);
   }
   async componentDidMount() {
     this.updateNews();
@@ -53,7 +54,6 @@ export class News extends Component {
     return (
       <div className="container mu-3">
         <h1 className="text-center" style={{ margin: "40px px" }}>
-          {" "}
           Top-Headlines from {this.capitalize(this.props.category)}
         </h1>
         {this.state.loading && <Spinner />}
@@ -67,6 +67,9 @@ export class News extends Component {
                     decription={
                       element.decription ? element.description.slice(0, 88) : ""
                     }
+                    date={element.publishedAt}
+                    author={element.author}
+                    source={element.source}
                     imageUrl={element.urlToImage}
                     newsUrl={element.url}
                   ></NewsItem>
@@ -79,7 +82,7 @@ export class News extends Component {
           <button
             disabled={this.state.page <= 1}
             type="button"
-            class="btn btn-dark"
+            className="btn btn-dark"
             onClick={this.handlePrevClick}
           >
             &larr; Previous
@@ -90,7 +93,7 @@ export class News extends Component {
               Math.ceil(this.state.totalResults / this.props.pageSize)
             }
             type="button"
-            class="btn btn-dark"
+            className="btn btn-dark"
             onClick={this.handleNextClick}
           >
             Next &rarr;
